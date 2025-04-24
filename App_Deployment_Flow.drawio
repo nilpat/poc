@@ -108,32 +108,32 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="10hOBsEl72_Errzlf3PB-47" value="Sync" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="210" y="513.47" width="60" height="30" as="geometry" />
+          <mxGeometry x="290" y="503.47" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="10hOBsEl72_Errzlf3PB-48" value="DEV Deploy" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" vertex="1" parent="1">
-          <mxGeometry x="405" y="523.75" width="60" height="30" as="geometry" />
+          <mxGeometry x="485" y="513.75" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="10hOBsEl72_Errzlf3PB-52" value="TEST Deploy" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" vertex="1" parent="1">
-          <mxGeometry x="405" y="634.75" width="60" height="30" as="geometry" />
+          <mxGeometry x="485" y="624.75" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="10hOBsEl72_Errzlf3PB-53" value="PROD Deploy" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=0;" vertex="1" parent="1">
-          <mxGeometry x="405" y="763.75" width="60" height="30" as="geometry" />
+          <mxGeometry x="485" y="753.75" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="10hOBsEl72_Errzlf3PB-58" value="Approval" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="276.25" y="844.02" width="60" height="30" as="geometry" />
+          <mxGeometry x="356.25" y="834.02" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="10hOBsEl72_Errzlf3PB-60" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="10hOBsEl72_Errzlf3PB-35" target="10hOBsEl72_Errzlf3PB-54">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="308" y="702.75" as="sourcePoint" />
-            <mxPoint x="517" y="806.75" as="targetPoint" />
+            <mxPoint x="388" y="692.75" as="sourcePoint" />
+            <mxPoint x="597" y="796.75" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
         <mxCell id="10hOBsEl72_Errzlf3PB-54" value="" style="shape=actor;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="290" y="783.75" width="32.5" height="50" as="geometry" />
+          <mxGeometry x="370" y="773.75" width="32.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="10hOBsEl72_Errzlf3PB-65" value="7" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rotation=0;gradientColor=#0057D2;strokeColor=none;gradientDirection=east;fillColor=#2395FF;rounded=0;pointerEvents=0;fontFamily=Helvetica;fontSize=16;fontColor=#FFFFFF;spacingTop=4;spacingBottom=4;spacingLeft=4;spacingRight=4;points=[];fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="291" y="666" width="30" height="30" as="geometry" />
+          <mxGeometry x="371" y="656" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
