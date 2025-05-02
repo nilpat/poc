@@ -19,6 +19,7 @@ jobs:
         - name: build the docker image
           id: build-docker-image
           run: |
+            cd src
             ls -la 
             docker build . -f Dockerfile -t dhruvin30/demo-image-test:latest
         - name: push the docker image
