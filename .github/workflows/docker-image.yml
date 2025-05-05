@@ -21,10 +21,10 @@ jobs:
           run: |
             cd src
             ls -la 
-            docker build . -f Dockerfile -t nileshrpatil/example-app-1:$BUILD_NUMBER
+            docker build . -f Dockerfile -t nileshrpatil/example-app-1:$(git rev-parse --short HEAD)
         - name: push the docker image
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:$BUILD_NUMBER
+          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:$(git rev-parse --short HEAD)
           
         # - name: update manifest file with latest image   
         #   uses: nileshrpatil/example-app-1@latest
