@@ -21,7 +21,7 @@ jobs:
           run: |
             cd src
             ls -la 
-            docker build . -f Dockerfile -t nileshrpatil/demo-image-test:latest
+            docker build . -f Dockerfile -t nileshrpatil/example-app-1:latest
         - name: push the docker image
           id: push-docker-image
           run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:latest
