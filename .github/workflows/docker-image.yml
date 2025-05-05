@@ -21,13 +21,14 @@ jobs:
           run: |
             cd src
             ls -la 
-            docker build . -f Dockerfile -t nileshrpatil/example-app-1:latest
+            docker build . -f Dockerfile -t nileshrpatil/example-app-1:$BUILD_NUMBER
         - name: push the docker image
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:latest
-        - name: update manifest file with latest image   
-          uses: nileshrpatil/example-app-1@latest
-          with:
-            manifest-path: ../deploy/deployment.yaml
-            new-image-tag: latest
-            container-name: example-app-1
+          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:$BUILD_NUMBER
+          
+        # - name: update manifest file with latest image   
+        #   uses: nileshrpatil/example-app-1@latest
+        #   with:
+        #     manifest-path: ../deploy/deployment.yaml
+        #     new-image-tag: latest
+        #     container-name: example-app-1
