@@ -27,8 +27,8 @@ jobs:
           run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:$(git rev-parse --short HEAD)
           
         - name: update manifest file with latest image   
-          uses: nileshrpatil/example-app-1@latest
+          uses: nileshrpatil/example-app-1@$(git rev-parse --short HEAD)
           with:
             manifest-path: ../deploy/deployment.yaml
-            new-image-tag: latest
+            new-image-tag: $(git rev-parse --short HEAD)
             container-name: example-app-1
