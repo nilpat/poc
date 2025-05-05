@@ -25,8 +25,8 @@ jobs:
         - name: push the docker image
           id: push-docker-image
           run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:latest
-#        - name: update manifest file with latest image   
-        - uses: nileshrpatil/example-app-1
+        - name: update manifest file with latest image   
+          uses: nileshrpatil@example-app-1
           with:
             manifest-path: ../deploy/deployment.yaml
             new-image-tag: latest
