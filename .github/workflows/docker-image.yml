@@ -28,6 +28,6 @@ jobs:
 #        - name: update manifest file with latest image   
         - uses: nileshrpatil/example-app-1
           with:
-            manifest-path: deploy/deployment.yaml
+            manifest-path: ../deploy/deployment.yaml
             new-image-tag: latest
             container-name: example-app-1
