@@ -1,9 +1,10 @@
 name: Build Docker Image
-on: workflow_dispatch
-  inputs:
-    service:
-      type: Boolean
-        description: Select the Service to Deploy
+on: 
+  workflow_dispatch:
+    inputs:
+      service1:
+        type: Boolean
+        description: True Or False
   # push:
   #   branches:
   #     - main
