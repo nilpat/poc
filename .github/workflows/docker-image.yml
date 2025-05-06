@@ -4,10 +4,10 @@ on:
     inputs:
       service1:
         type: boolean
-        description: Select Service to Deploy
+        description: Select Service1 to Deploy
       service2:
         type: boolean
-        description: Select Service to Deploy
+        description: Select Service2 to Deploy
   # push:
   #   branches:
   #     - main
