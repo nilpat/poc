@@ -24,11 +24,20 @@ jobs:
             docker build . -f Dockerfile -t nileshrpatil/example-app-1:$(git rev-parse --short HEAD)
         - name: push the docker image
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:$(git rev-parse --short HEAD)
-          
-        - name: update manifest file with latest image   
-          uses: Charlyzzz/update-k8s-image@v1.7.1
+          run: |
+            TAG=$(git rev-parse --short HEAD)
+            docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:$TAG
+            sed -i "s|image:.*|image: example-app-1:$TAG|" deploy/deployment.yaml
+
+        - name: Commit updated deployment.yaml
+          uses: stefanzweifel/git-auto-commit-action@v5
           with:
-            manifest-path: ./deploy/deployment.yaml
-            new-image-tag: latest
+          commit_message: "Update image tag to latest"
+          file_pattern: deploy/deployment.yaml
+          
+        # - name: update manifest file with latest image   
+        #   uses: Charlyzzz/update-k8s-image@v1.7.1
+        #   with:
+        #     manifest-path: ./deploy/deployment.yaml
+        #     new-image-tag: latest
             container-name: example-app-1
