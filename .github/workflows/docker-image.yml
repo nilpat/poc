@@ -27,7 +27,7 @@ jobs:
           run: docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:$(git rev-parse --short HEAD)
           
         - name: update manifest file with latest image   
-          uses: Charlyzzz/update-k8s-image
+          uses: Charlyzzz/update-k8s-image@Latest
           with:
             manifest-path: ../deploy/deployment.yaml
             new-image-tag: $(git rev-parse --short HEAD)
