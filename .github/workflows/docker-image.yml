@@ -3,10 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       service1:
-        type: environment
+        type: boolean
         description: Select Service to Deploy
       service2:
-        type: environment
+        type: boolean
         description: Select Service to Deploy
   # push:
   #   branches:
