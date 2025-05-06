@@ -29,6 +29,6 @@ jobs:
         - name: update manifest file with latest image   
           uses: Charlyzzz/update-k8s-image@v1.7.1
           with:
-            manifest-path: ../deploy/deployment.yaml
+            manifest-path: ./deploy/deployment.yaml
             new-image-tag: $(git rev-parse --short HEAD)
             container-name: example-app-1
