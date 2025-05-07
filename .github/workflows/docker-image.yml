@@ -32,14 +32,14 @@ jobs:
         - name: build the docker image
           id: build-docker-image
           run: |
+            TAG=$(git rev-parse --short HEAD)
             cd src
             ls -la 
-            docker build . -f dockerfile -t nileshrpatil/example-app-1:$(git rev-parse --short HEAD)
+            docker build . -f dockerfile -t example-app-1:$TAG
         - name: push the docker image
           id: push-docker-image
           run: |
-            TAG=$(git rev-parse --short HEAD)
-            docker push ${{secrets.DOCKERHUB_USERNAME}}/example-app-1:$TAG
+            docker push example-app-1:$TAG
             sed -i "s|image:.*|image: example-app-1:$TAG|" deploy/deployment.yaml
             
         - name: Commit updated deployment.yaml
