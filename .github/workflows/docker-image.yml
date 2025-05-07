@@ -38,7 +38,7 @@ jobs:
           run: |
             TAG=latest
             ls -la 
-            docker build -t $IMAGE_NAME:$TAG ./src
+            docker build -t example-app-1:$TAG ./src
             docker push $IMAGE_NAME:$TAG
             sed -i "s|image:.*|image: $IMAGE_NAME:$TAG|" deploy/deployment.yaml
             
