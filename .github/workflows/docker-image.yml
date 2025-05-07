@@ -14,7 +14,7 @@ on: workflow_dispatch
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/example-app-1
+  IMAGE_NAME: ${{ secrets.DOCKERUB_USERNAME }}/example-app-1
   
 jobs:
     build:
