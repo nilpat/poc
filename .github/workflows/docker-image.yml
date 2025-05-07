@@ -11,6 +11,11 @@ on: workflow_dispatch
   # push:
   #   branches:
   #     - main
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/example-app-1
+  
 jobs:
     build:
       name: push docker image to docker hub
@@ -29,18 +34,13 @@ jobs:
             username: ${{secrets.DOCKERHUB_USERNAME}}
             password: ${{secrets.DOCKERHUB_PASSWORD}}
 
-        - name: build the docker image
-          id: build-docker-image
+        - name: build & push the docker image
           run: |
             TAG=$(git rev-parse --short HEAD)
-            cd src
             ls -la 
-            docker build . -f dockerfile -t example-app-1:$TAG
-        - name: push the docker image
-          id: push-docker-image
-          run: |
+            docker build -t $IMAGE_NAME:$TAG ./src
             docker push example-app-1:$TAG
-            sed -i "s|image:.*|image: example-app-1:$TAG|" deploy/deployment.yaml
+            sed -i "s|image:.*|image: $IMAGE_NAME:$TAG|" deploy/deployment.yaml
             
         - name: Commit updated deployment.yaml
           uses: stefanzweifel/git-auto-commit-action@v5
