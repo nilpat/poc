@@ -30,7 +30,7 @@ jobs:
           run: |
             cd src
             ls -la 
-            docker build . -f Dockerfile -t nileshrpatil/example-app-1:$(git rev-parse --short HEAD)
+            docker build . -f dockerfile -t nileshrpatil/example-app-1:$(git rev-parse --short HEAD)
         - name: push the docker image
           id: push-docker-image
           run: |
