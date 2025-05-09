@@ -8,3 +8,14 @@ data:
     {
       "environment" : "dev"
     }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example-app-2
+  namespace: default
+data:
+  config.json: |
+    {
+      "environment" : "dev"
+    }

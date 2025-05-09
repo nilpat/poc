@@ -32,3 +32,42 @@ spec:
       - name: config-volume
         configMap:
           name: example-app-1
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-app-2
+  labels:
+    app: example-app-2
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: example-app-2
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: example-app-2
+    spec:
+      containers:
+      - name: example-app-2
+        image: nileshrpatil/example-app-2:2a9026b
+        ports:
+        - containerPort: 5010
+        volumeMounts:
+        - name: config-volume
+          mountPath: /configs/
+      volumes:
+      - name: config-volume
+        configMap:
+          name: example-app-2
+          
+

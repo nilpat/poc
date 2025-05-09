@@ -14,7 +14,8 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/example-app-1
+  IMAGE_NAME_SERVICE1: ${{ secrets.DOCKERHUB_USERNAME }}/example-app-1
+  IMAGE_NAME_SERVICE2: ${{ secrets.DOCKERHUB_USERNAME }}/example-app-2
   
 jobs:
     build:
@@ -37,11 +38,11 @@ jobs:
           if: ${{ github.event.inputs.service1 == 'true' }}
           run: |
             echo "Deploying Service1..."
-            TAG=$(git rev-parse --short HEAD)
+            TAG1=$(git rev-parse --short HEAD)
             ls -la 
-            docker build -t $IMAGE_NAME:$TAG ./src
-            docker push $IMAGE_NAME:$TAG
-            sed -i "s|image:.*|image: $IMAGE_NAME:$TAG|" deploy/deployment.yaml
+            docker build -t $IMAGE_NAME_SERVICE1:$TAG1 ./app1
+            docker push $IMAGE_NAME_SERVICE1:$TAG1
+            sed -i "s|image:.*|image: $IMAGE_NAME_SERVICE1:$TAG1|" deploy/deployment.yaml
             
         - name: Commit updated deployment.yaml
           uses: stefanzweifel/git-auto-commit-action@v5
@@ -53,11 +54,35 @@ jobs:
     build2:
       name: Deploy Service2
       runs-on: ubuntu-latest
+
       steps:
         - name: Checkout Code
-          if: ${{ github.event.inputs.service2 == 'true' }}
-          run: echo "Deploying Service2..."
+          uses: actions/checkout@v3
+          with:
+            token: ${{ secrets.GH_TOKEN }}
             
+           
+        - name: login to docker hub
+          uses: docker/login-action@v2
+          with:
+            username: ${{secrets.DOCKERHUB_USERNAME}}
+            password: ${{secrets.DOCKERHUB_PASSWORD}}
+
+        - name: build & push the docker image
+          if: ${{ github.event.inputs.service2 == 'true' }}
+          run: |
+            echo "Deploying Service2..."
+            TAG2=$(git rev-parse --short HEAD)
+            ls -la 
+            docker build -t $IMAGE_NAME_SERVICE2:$TAG2 ./app2
+            docker push $IMAGE_NAME_SERVICE2:$TAG2
+            sed -i "s|image:.*|image: $IMAGE_NAME_SERVICE2:$TAG2|" deploy/deployment.yaml
+            
+        - name: Commit updated deployment.yaml
+          uses: stefanzweifel/git-auto-commit-action@v5
+          with:
+            commit_message: "Update image tag to latest"
+            file_pattern: deploy/deployment.yaml            
 
     
           
