@@ -1,16 +1,16 @@
 name: Build Docker Image
-on: workflow_dispatch
-  # workflow_dispatch:
-  #   inputs:
-  #     service1:
-  #       type: boolean
-  #       description: Select Service1 to Deploy
-  #     service2:
-  #       type: boolean
-  #       description: Select Service2 to Deploy
-  # push:
-  #   branches:
-  #     - main
+on: 
+  workflow_dispatch:
+    inputs:
+      service1:
+        type: boolean
+        description: Select Service1 to Deploy
+      service2:
+        type: boolean
+        description: Select Service2 to Deploy
+  push:
+    branches:
+      - main
 
 env:
   REGISTRY: docker.io
@@ -35,7 +35,7 @@ jobs:
             password: ${{secrets.DOCKERHUB_PASSWORD}}
 
         - name: build & push the docker image
-          if: ${{ inputs.boolean == 'true' }}
+          if: ${{ inputs.service1 == 'true' }}
           run: |
             TAG=latest
             ls -la 
