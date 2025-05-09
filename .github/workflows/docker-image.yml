@@ -35,7 +35,7 @@ jobs:
             password: ${{secrets.DOCKERHUB_PASSWORD}}
 
         - name: build & push the docker image
-          if: ${{ inputs.service1 == 'true' }}
+          if: ${{ github.event.inputs.service1 == 'true' }}
           run: |
             TAG=latest
             ls -la 
