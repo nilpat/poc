@@ -36,7 +36,7 @@ jobs:
         - name: build & push the docker image
           if: ${{ github.event.inputs.service1 == 'true' }}
           run: |
-            TAG=latest
+            TAG=$(git rev-parse --short HEAD)
             ls -la 
             docker build -t $IMAGE_NAME:$TAG ./src
             docker push $IMAGE_NAME:$TAG
