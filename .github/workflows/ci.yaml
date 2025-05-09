@@ -25,11 +25,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: test
-        if: ${{ inputs.booleab == 'true' }}
-        run: | 
-#           echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}"
+      - name: code checkout
+        uses: actions/checkout@v2
+      - name: test        
+        if: ${{ github.event.inputs.boolean == 'true' }}
+        run:
           echo "boolean is ${{ github.event.inputs.boolean }}" / ${{ inputs.boolean }}
+#           echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}"
 #           echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
