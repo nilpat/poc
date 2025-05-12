@@ -42,7 +42,7 @@ jobs:
             ls -la 
             docker build -t $IMAGE_NAME_SERVICE1:$TAG1 ./app1
             docker push $IMAGE_NAME_SERVICE1:$TAG1
-            sed -i "s|image:.*|image: $IMAGE_NAME_SERVICE1:$TAG1|" deploy/deployment.yaml
+            sed -i "s|image:.*|image: $IMAGE_NAME_SERVICE1:$TAG1|" app1/deploy/deployment.yaml
             
         - name: Commit updated deployment.yaml
           uses: stefanzweifel/git-auto-commit-action@v5
@@ -76,7 +76,7 @@ jobs:
             ls -la 
             docker build -t $IMAGE_NAME_SERVICE2:$TAG2 ./app2
             docker push $IMAGE_NAME_SERVICE2:$TAG2
-            sed -i "s|image:.*|image: $IMAGE_NAME_SERVICE2:$TAG2|" deploy/deployment.yaml
+            sed -i "s|image:.*|image: $IMAGE_NAME_SERVICE2:$TAG2|" app2/deploy/deployment.yaml
             
         - name: Commit updated deployment.yaml
           uses: stefanzweifel/git-auto-commit-action@v5
