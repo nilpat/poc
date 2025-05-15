@@ -1,16 +1,16 @@
 name: Build & Deploy
 on: 
-  workflow_dispatch:
-    inputs:
-      service1:
-        type: boolean
-        description: Select Service1 to Deploy
-      service2:
-        type: boolean
-        description: Select Service2 to Deploy
-  # push:
-  #   branches:
-  #     - main
+  # workflow_dispatch:
+  #   inputs:
+  #     service1:
+  #       type: boolean
+  #       description: Select Service1 to Deploy
+  #     service2:
+  #       type: boolean
+  #       description: Select Service2 to Deploy
+  push:
+    branches:
+      - main
 
 env:
   REGISTRY: docker.io
@@ -49,17 +49,6 @@ jobs:
             commit_message: "Update image tag to latest"
             file_pattern: deploy/deployment.yaml
 
-
-    build2:
-      name: Deploy Service2
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout Code
-          if: ${{ github.event.inputs.service2 == 'true' }}
-          run: echo "Deploying Service2..."
-            
-
-    
           
         # - name: update manifest file with latest image   
         #   uses: Charlyzzz/update-k8s-image@v1.7.1
