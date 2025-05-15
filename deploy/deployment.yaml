@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: example-app-1
-        image: nileshrpatil/example-app-1:dbbab64
+        image: nileshrpatil/example-app-1:049a6b5
         ports:
         - containerPort: 5000
         volumeMounts:
