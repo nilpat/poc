@@ -34,7 +34,7 @@ jobs:
             password: ${{secrets.DOCKERHUB_PASSWORD}}
 
         - name: build & push the docker image
-          if: ${{ github.event.inputs.service1 == 'true' }}
+#          if: ${{ github.event.inputs.service1 == 'true' }}
           run: |
             echo "Deploying Service1..."
             TAG=$(git rev-parse --short HEAD)
