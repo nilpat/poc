@@ -1,5 +1,5 @@
 name: Build & Deploy
-on: 
+on: workflow_dispatch
   # workflow_dispatch:
   #   inputs:
   #     service1:
@@ -8,9 +8,9 @@ on:
   #     service2:
   #       type: boolean
   #       description: Select Service2 to Deploy
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
 env:
   REGISTRY: docker.io
