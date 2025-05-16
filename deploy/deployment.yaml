@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-app-1
+  name: example-app-3
   labels:
-    app: example-app-1
+    app: example-app-3
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: example-app-1
+      app: example-app-3
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -18,10 +18,10 @@ spec:
   template:
     metadata:
       labels:
-        app: example-app-1
+        app: example-app-3
     spec:
       containers:
-      - name: example-app-1
+      - name: example-app-3
         image: nileshrpatil2025/example-app-3:8fc0a04
         ports:
         - containerPort: 5000
@@ -31,4 +31,4 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: example-app-1
+          name: example-app-3
