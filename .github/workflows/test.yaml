@@ -6,11 +6,11 @@
             required: true
             default: 'staging'
     jobs:
-    build:
-      runs-on: ubuntu-latest
+        build:
+          runs-on: ubuntu-latest
 
-      steps:
-        - name: test        
-          if: ${{ github.event.inputs.environment == 'production' }}
-          run:
-            echo "Environment is ${{ github.event.inputs.environment }}" / ${{ inputs.environment }}
+          steps:
+            - name: test        
+              if: ${{ github.event.inputs.environment == 'production' }}
+              run:
+                echo "Environment is ${{ github.event.inputs.environment }}" / ${{ inputs.environment }}
