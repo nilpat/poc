@@ -1,0 +1,16 @@
+    on:
+      workflow_dispatch:
+        inputs:
+          environment:
+            description: 'Environment to deploy to'
+            required: true
+            default: 'staging'
+    jobs:
+    build:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: test        
+          if: ${{ github.event.inputs.environment == 'production' }}
+          run:
+            echo "Environment is ${{ github.event.inputs.environment }}" / ${{ inputs.environment }}
