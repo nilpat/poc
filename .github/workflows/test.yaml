@@ -14,4 +14,5 @@
               if: ${{ github.event.inputs.environment == 'production' }}
               run: 
                 echo "Environment is ${{ github.event.inputs.environment }}" / ${{ inputs.environment }}
+                echo "Workflow RunID is ${{ github.run_id }}"
     
