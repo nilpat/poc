@@ -12,5 +12,7 @@
           steps:
             - name: test        
               if: ${{ github.event.inputs.environment == 'production' }}
-              run:
+              run: 
                 echo "Environment is ${{ github.event.inputs.environment }}" / ${{ inputs.environment }}
+                RUNID=$(gh api repos/godotengine/godot/commits/94dbf69f5d6b7d2fd9561692df2e71557607fddc/check-runs | jq -r '.check_runs[] | select(.name == "🔗 GHA") | .html_url | capture("/runs/(?<number>[0-9]+)/jobs") | .number' | sed 's/"//g' | head -n 1)
+                echo $RUNID
